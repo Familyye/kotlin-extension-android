@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android.android.content
+package cn.maizz.kotlin.extension.android.content
 
 import android.annotation.TargetApi
 import android.app.usage.UsageStatsManager

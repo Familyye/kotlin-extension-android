@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android.java.util
+package cn.maizz.kotlin.extension.java.util
 
 import android.text.format.DateUtils
 import java.text.SimpleDateFormat

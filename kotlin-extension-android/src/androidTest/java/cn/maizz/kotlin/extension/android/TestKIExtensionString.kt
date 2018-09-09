@@ -17,7 +17,7 @@
 package cn.maizz.kotlin.extension.android
 
 import android.support.test.runner.AndroidJUnit4
-import com.sollyu.kotlin.utils.kotlin.KIExtensionString
+import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

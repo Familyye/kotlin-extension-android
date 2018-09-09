@@ -14,16 +14,13 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension.java.io
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import cn.maizz.kotlin.extension.android.java.lang.KIExtensionException
+import org.apache.commons.codec.binary.Hex
+import org.apache.commons.codec.digest.DigestUtils
+import java.io.File
+import java.io.FileInputStream
 
-class MainActivity : AppCompatActivity(), KIExtensionException {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+interface KIExtensionFile {
+    fun File.md5(): String = String(Hex.encodeHex(DigestUtils.md5(FileInputStream(this)))).toUpperCase()
 }

@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension.java.lang
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import cn.maizz.kotlin.extension.android.java.lang.KIExtensionException
+import java.io.IOException
+import java.lang.Exception
+import java.lang.NullPointerException
 
-class MainActivity : AppCompatActivity(), KIExtensionException {
+@Suppress("unused")
+interface KIExtensionException {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    fun Exception.i18nMessage(): String? {
+        return when (this) {
+            is IOException -> "IO异常："
+            is NullPointerException -> "空指针异常："
+            else -> this.message
+        }
     }
 }

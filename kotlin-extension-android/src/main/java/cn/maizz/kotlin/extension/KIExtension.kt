@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension
 
-import cn.maizz.kotlin.extension.android.android.content.KIExtensionContext
-import cn.maizz.kotlin.extension.android.java.io.KIExtensionFile
-import cn.maizz.kotlin.extension.android.java.util.KIExtensionDate
-import com.sollyu.kotlin.utils.kotlin.KIExtensionString
+import cn.maizz.kotlin.extension.android.content.KIExtensionContext
+import cn.maizz.kotlin.extension.java.io.KIExtensionFile
+import cn.maizz.kotlin.extension.java.util.KIExtensionDate
+import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 
 /**
  * 接入主类
@@ -29,5 +29,4 @@ interface KIExtension :
         KIExtensionContext,
         KIExtensionFile,
         KIExtensionString,
-
         KIExtensionDate

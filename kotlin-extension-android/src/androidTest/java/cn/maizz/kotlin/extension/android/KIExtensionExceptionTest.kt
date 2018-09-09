@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android.java.io
+package cn.maizz.kotlin.extension.android
 
-import org.apache.commons.codec.binary.Hex
-import org.apache.commons.codec.digest.DigestUtils
-import java.io.File
-import java.io.FileInputStream
+import android.support.test.runner.AndroidJUnit4
+import cn.maizz.kotlin.extension.java.lang.KIExtensionException
+import junit.framework.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
+import java.lang.NullPointerException
 
-interface KIExtensionFile {
-    fun File.md5(): String = String(Hex.encodeHex(DigestUtils.md5(FileInputStream(this)))).toUpperCase()
+@RunWith(AndroidJUnit4::class)
+class KIExtensionExceptionTest : KIExtensionException {
+
+    @Test
+    fun testNullPointerException() {
+        Assert.assertEquals(NullPointerException().i18nMessage(), "")
+    }
 }

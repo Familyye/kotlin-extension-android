@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sollyu.kotlin.utils.kotlin
+package cn.maizz.kotlin.extension.kotlin
 
 import android.util.Base64
 import java.nio.charset.Charset
@@ -31,11 +31,7 @@ interface KIExtensionString {
      * @param startPosition 起始位置
      * @param endPosition   结束未知
      */
-    fun String.mosaic(char: Char = '*', startPosition: Int = 1, endPosition: Int = length): String {
-        val stringBuilder = StringBuilder()
-        (0 until length).forEach { stringBuilder.append(if (it in startPosition..endPosition) char else this[it]) }
-        return stringBuilder.toString()
-    }
+    fun String.mosaic(char: Char = '*', startPosition: Int = 1, endPosition: Int = length): String = StringBuilder().apply { (0 until length).forEach { this.append(if (it in startPosition..endPosition) char else this[it]) } }.toString()
 
     fun String.base64Encode(charset: Charset = Charsets.UTF_8, base64Flag: Int = Base64.NO_WRAP): String = Base64.encodeToString(this.toByteArray(charset), base64Flag)
     fun String.base64Decode(charset: Charset = Charsets.UTF_8, base64Flag: Int = Base64.NO_WRAP): String = String(Base64.decode(this, base64Flag), charset)
