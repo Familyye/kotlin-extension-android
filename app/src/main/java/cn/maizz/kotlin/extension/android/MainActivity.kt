@@ -18,9 +18,8 @@ package cn.maizz.kotlin.extension.android
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import cn.maizz.kotlin.extension.android.java.lang.KIExtensionException
 
-class MainActivity : AppCompatActivity(), KIExtensionException {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

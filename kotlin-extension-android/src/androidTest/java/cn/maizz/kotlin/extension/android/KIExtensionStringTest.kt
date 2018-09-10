@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,14 @@
 package cn.maizz.kotlin.extension.android
 
 import android.support.test.runner.AndroidJUnit4
+import android.util.Log
 import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class TestKIExtensionString : KIExtensionString {
+class KIExtensionStringTest : KIExtensionString {
 
     @Test
     fun base64Encode() {
@@ -51,7 +52,5 @@ class TestKIExtensionString : KIExtensionString {
         assertEquals("1234567890".random(50).length, 50)
         assertEquals("abcdefghijklmnopqrstuvwxyz".random(50).length, 50)
         assertEquals("这件事情出现在大家眼前,到底是真是假?按照大家".random(50).length, 50)
-
-
     }
 }
