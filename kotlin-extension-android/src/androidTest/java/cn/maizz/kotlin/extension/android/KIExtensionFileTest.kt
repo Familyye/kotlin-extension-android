@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,19 @@
 package cn.maizz.kotlin.extension.android
 
 import android.support.test.runner.AndroidJUnit4
-import cn.maizz.kotlin.extension.java.lang.KIExtensionException
-import junit.framework.Assert
+import cn.maizz.kotlin.extension.java.io.KIExtensionFile
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.lang.NullPointerException
+import java.io.File
 
 @RunWith(AndroidJUnit4::class)
-class KIExtensionExceptionTest : KIExtensionException {
+class KIExtensionFileTest : KIExtensionFile {
 
     @Test
-    fun testNullPointerException() {
-        Assert.assertEquals(NullPointerException().i18nMessage(), "")
+    fun readFileToByteArray() {
+        val f = File("/data/data/cn.maizz.kotlin.extension.android.test/files/test.tmp").apply { this.parentFile.mkdirs(); }
+        f.writeText("kotlin-extension-android")
+        Assert.assertEquals(f.md5(), "4DE01A6FB114971C48C4495DA70F23B2")
     }
 }
