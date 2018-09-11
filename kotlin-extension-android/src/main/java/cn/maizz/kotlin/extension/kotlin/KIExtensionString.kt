@@ -31,7 +31,7 @@ interface KIExtensionString {
      * @param startPosition 起始位置
      * @param endPosition   结束未知
      */
-    fun String.mosaic(char: Char = '*', startPosition: Int = 1, endPosition: Int = length): String = StringBuilder().apply { (0 until length).forEach { this.append(if (it in startPosition..endPosition) char else this[it]) } }.toString()
+    fun String.mosaic(char: Char = '*', startPosition: Int = 1, endPosition: Int = length): String = StringBuilder().also { stringBuilder -> (0 until length).forEach { i -> stringBuilder.append(if (i in startPosition..endPosition) char else this@mosaic[i]) } }.toString()
 
     fun String.base64Encode(charset: Charset = Charsets.UTF_8, base64Flag: Int = Base64.NO_WRAP): String = Base64.encodeToString(this.toByteArray(charset), base64Flag)
     fun String.base64Decode(charset: Charset = Charsets.UTF_8, base64Flag: Int = Base64.NO_WRAP): String = String(Base64.decode(this, base64Flag), charset)
