@@ -14,21 +14,13 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension
+package cn.maizz.kotlin.extension.android.content
 
-import cn.maizz.kotlin.extension.android.content.KIExtensionContext
-import cn.maizz.kotlin.extension.android.content.KIExtensionTextView
-import cn.maizz.kotlin.extension.java.io.KIExtensionFile
-import cn.maizz.kotlin.extension.java.util.KIExtensionDate
-import cn.maizz.kotlin.extension.kotlin.KIExtensionString
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 
-/**
- * 接入主类
- */
-@Suppress("unused")
-interface KIExtension :
-        KIExtensionContext,
-        KIExtensionTextView,
-        KIExtensionFile,
-        KIExtensionString,
-        KIExtensionDate
+interface KIExtensionTextView {
+
+    fun TextView.hideSoftInputFromWindow() = (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow( this.windowToken, 0)
+}
