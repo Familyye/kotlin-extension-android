@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android.java.util
+package cn.maizz.kotlin.extension.java.util
 
 import android.text.format.DateUtils
 import java.text.SimpleDateFormat

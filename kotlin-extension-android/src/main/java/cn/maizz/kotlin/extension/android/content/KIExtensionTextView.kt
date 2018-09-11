@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android.java.io
+package cn.maizz.kotlin.extension.android.content
 
-import org.apache.commons.codec.binary.Hex
-import org.apache.commons.codec.digest.DigestUtils
-import java.io.File
-import java.io.FileInputStream
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 
-interface KIExtensionFile {
-    fun File.md5(): String = String(Hex.encodeHex(DigestUtils.md5(FileInputStream(this)))).toUpperCase()
+interface KIExtensionTextView {
+
+    fun TextView.hideSoftInputFromWindow() = (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow( this.windowToken, 0)
 }

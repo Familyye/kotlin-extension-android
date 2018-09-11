@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension
 
-import cn.maizz.kotlin.extension.android.android.content.KIExtensionContext
-import cn.maizz.kotlin.extension.android.java.io.KIExtensionFile
-import cn.maizz.kotlin.extension.android.java.util.KIExtensionDate
-import com.sollyu.kotlin.utils.kotlin.KIExtensionString
+import cn.maizz.kotlin.extension.android.content.KIExtensionContext
+import cn.maizz.kotlin.extension.android.content.KIExtensionTextView
+import cn.maizz.kotlin.extension.java.io.KIExtensionFile
+import cn.maizz.kotlin.extension.java.util.KIExtensionDate
+import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 
 /**
  * 接入主类
@@ -27,7 +28,7 @@ import com.sollyu.kotlin.utils.kotlin.KIExtensionString
 @Suppress("unused")
 interface KIExtension :
         KIExtensionContext,
+        KIExtensionTextView,
         KIExtensionFile,
         KIExtensionString,
-
         KIExtensionDate

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,20 @@
 
 package cn.maizz.kotlin.extension.android
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.support.test.runner.AndroidJUnit4
+import cn.maizz.kotlin.extension.java.io.KIExtensionFile
+import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
+import java.io.File
 
-class MainActivity : AppCompatActivity() {
+@RunWith(AndroidJUnit4::class)
+class KIExtensionFileTest : KIExtensionFile {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    @Test
+    fun readFileToByteArray() {
+        val f = File("/data/data/cn.maizz.kotlin.extension.android.test/files/test.tmp").apply { this.parentFile.mkdirs(); }
+        f.writeText("kotlin-extension-android")
+        Assert.assertEquals(f.md5(), "4DE01A6FB114971C48C4495DA70F23B2")
     }
 }
