@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Sollyu，Wonium
+ * Copyright 2018 Sollyu, Wonium
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension.android.widget
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 
-class MainActivity : AppCompatActivity() {
+@Suppress("unused")
+interface KIExtensionView {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+    fun View.showSoftInput(flags: Int = InputMethodManager.SHOW_IMPLICIT) = (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(this, flags)
+
 }
