@@ -14,20 +14,31 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.android
+package cn.maizz.kotlin.extension.android.sample
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.View
 import cn.maizz.kotlin.extension.KIExtension
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
-class MainActivity : AppCompatActivity(),KIExtension {
+class MainActivity : AppCompatActivity(), KIExtension {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tvTextView.postDelayed({ tvTextView.showSoftInput() }, TimeUnit.SECONDS.toMillis(2))
+
+
+        edEditText.onImeActionDone { textView, actionId, keyEvent ->
+            Log.d("====", "Done")
+            return@onImeActionDone true
+        }
+    }
+
+    fun onButtonClickTest(view: View) {
+        edEditText.postDelayed({ edEditText.showSoftInput() }, TimeUnit.SECONDS.toMillis(2))
     }
 }

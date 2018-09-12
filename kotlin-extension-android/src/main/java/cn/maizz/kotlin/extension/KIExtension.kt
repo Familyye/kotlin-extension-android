@@ -17,6 +17,7 @@
 package cn.maizz.kotlin.extension
 
 import cn.maizz.kotlin.extension.android.content.KIExtensionContext
+import cn.maizz.kotlin.extension.android.widget.KIExtensionEditView
 import cn.maizz.kotlin.extension.android.widget.KIExtensionTextView
 import cn.maizz.kotlin.extension.android.widget.KIExtensionView
 import cn.maizz.kotlin.extension.java.io.KIExtensionFile
@@ -30,6 +31,7 @@ import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 interface KIExtension :
         KIExtensionContext,
         KIExtensionTextView,
+        KIExtensionEditView,
         KIExtensionFile,
         KIExtensionString,
         KIExtensionDate

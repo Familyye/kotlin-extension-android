@@ -23,6 +23,6 @@ import android.view.inputmethod.InputMethodManager
 @Suppress("unused")
 interface KIExtensionView {
 
-    fun View.showSoftInput() = (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(this, 0)
+    fun View.showSoftInput(flags: Int = InputMethodManager.SHOW_IMPLICIT) = (this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(this, flags)
 
 }
