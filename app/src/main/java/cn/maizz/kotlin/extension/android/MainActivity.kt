@@ -18,11 +18,16 @@ package cn.maizz.kotlin.extension.android
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import cn.maizz.kotlin.extension.KIExtension
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),KIExtension {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        tvTextView.postDelayed({ tvTextView.showSoftInput() }, TimeUnit.SECONDS.toMillis(2))
     }
 }
