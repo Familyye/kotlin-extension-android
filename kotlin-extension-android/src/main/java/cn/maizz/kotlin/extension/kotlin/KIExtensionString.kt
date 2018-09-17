@@ -39,4 +39,7 @@ interface KIExtensionString {
     fun String.md5(charset: Charset = Charsets.UTF_8, useUpper: Boolean = true) = MessageDigest.getInstance("MD5").digest(this.toByteArray(charset)).joinToString("") { String.format(if (useUpper) "%02X" else "%02x", it) }
 
     fun String.random(length: Int = 10, random: Random = Random(System.currentTimeMillis())): String = (0 until length).map { this[random.nextInt(this.length)] }.joinToString("")
+
+
+
 }
