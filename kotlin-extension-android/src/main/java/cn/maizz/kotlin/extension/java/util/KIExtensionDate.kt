@@ -27,6 +27,8 @@ interface KIExtensionDate {
 
     fun Date.isToday() = DateUtils.isToday(this.time)
 
+    fun Date.isFuture() = this.time > System.currentTimeMillis()
+
     fun Date.isTomorrow(): Boolean {
         val todayCalendar = Calendar.getInstance().apply { this.add(Calendar.DAY_OF_MONTH, 1) }
         val tomorrowCalendar = Calendar.getInstance().apply { this.timeInMillis = this@isTomorrow.time }
