@@ -16,8 +16,8 @@
 
 package cn.maizz.kotlin.extension.kotlin
 
-class KIExtensionByte {
+interface KIExtensionByte {
 
-    fun Byte.setBitValue(value: Byte, position: Int): Byte {return ((value.toInt() shl   position) or this.toInt()).toByte() }
+    fun Byte.setBitValue(value: Byte, position: Int): Byte = ((value.toInt() shl position) or this.toInt()).toByte()
 
 }

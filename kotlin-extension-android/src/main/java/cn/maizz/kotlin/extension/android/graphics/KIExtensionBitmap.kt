@@ -20,6 +20,7 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import java.nio.ByteBuffer
 
+@Suppress("unused")
 interface KIExtensionBitmap {
     /**
      * bitmap转成字节数组字节存储顺序为ARGB
@@ -37,26 +38,17 @@ interface KIExtensionBitmap {
     /**
      * bitmap 字节长度
      */
-    fun Bitmap.length():Int=convertToByteArray().size
+    fun Bitmap.length(): Int = convertToByteArray().size
 
     /**
      * bitmap翻转
      */
-    fun Bitmap.flipping() :Bitmap{
-        val matrix=Matrix()
-        matrix.postScale(1.0f,-1.0f)
-        return Bitmap.createBitmap(this,0,0,this.width,this.height,matrix,true)
-    }
+    fun Bitmap.flipping(): Bitmap = Bitmap.createBitmap(this, 0, 0, this.width, this.height, Matrix().apply { postScale(1.0f, -1.0f) }, true)
 
     /**
      * bitmap 旋转
      */
-    fun Bitmap.rotate(degrees:Float=0f):Bitmap{
-        val  matrix=Matrix()
-        matrix.postRotate(degrees)
-        return Bitmap.createBitmap(this,0,0,this.width,this.height,matrix,true)
-
-    }
+    fun Bitmap.rotate(degrees: Float = 0f): Bitmap = Bitmap.createBitmap(this, 0, 0, this.width, this.height, Matrix().apply { postRotate(degrees) }, true)
 
     /**
      * bitmap旋转
@@ -64,27 +56,9 @@ interface KIExtensionBitmap {
      * px 旋转中心x坐标
      * py 旋转中心Y坐标
      */
-    fun Bitmap.rotate(degrees:Float,px:Float,py:Float):Bitmap{
-        val  matrix=Matrix()
-        matrix.postRotate(degrees,0f,0f)
-        return Bitmap.createBitmap(this,0,0,this.width,this.height,matrix,true)
-    }
+    fun Bitmap.rotate(degrees: Float, px: Float, py: Float): Bitmap = Bitmap.createBitmap(this, 0, 0, this.width, this.height, Matrix().apply { postRotate(degrees, 0f, 0f) }, true)
 
-    fun Bitmap.zoom(px: Float,py: Float):Bitmap{
-        val  matrix=Matrix()
-        matrix.postScale(px,py)
-        return Bitmap.createBitmap(this,0,0,this.width,this.height,matrix,true)
-    }
+    fun Bitmap.zoom(px: Float, py: Float): Bitmap = Bitmap.createBitmap(this, 0, 0, this.width, this.height, Matrix().apply { postScale(px, py) }, true)
 
-    fun Bitmap.zoomByWidthAndHeight(width:Int,height:Int):Bitmap{
-        val px:Float=((width/this.width).toFloat());
-        val py=(height/this.height).toFloat();
-        return zoom(px,py);
-    }
-
-
-    fun Bitmap.convertToBlackWhite(){
-
-    }
-
+    fun Bitmap.zoomByWidthAndHeight(width: Int, height: Int): Bitmap = zoom(((width / this.width).toFloat()), (height / this.height).toFloat())
 }
