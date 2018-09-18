@@ -22,6 +22,7 @@ import cn.maizz.kotlin.extension.android.widget.KIExtensionTextView
 import cn.maizz.kotlin.extension.android.widget.KIExtensionView
 import cn.maizz.kotlin.extension.java.io.KIExtensionFile
 import cn.maizz.kotlin.extension.java.util.KIExtensionDate
+import cn.maizz.kotlin.extension.kotlin.KIExtensionByte
 import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 
 /**
@@ -34,4 +35,5 @@ interface KIExtension :
         KIExtensionEditView,
         KIExtensionFile,
         KIExtensionString,
-        KIExtensionDate
+        KIExtensionDate,
+        KIExtensionByte
