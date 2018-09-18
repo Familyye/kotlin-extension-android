@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import cn.maizz.kotlin.extension.KIExtension
+import cn.maizz.kotlin.extension.TestByte
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
@@ -30,12 +31,15 @@ class MainActivity : AppCompatActivity(), KIExtension {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+            var byte:Byte=0
+        tv.text=byte.setBitValue(1,1).toString()
+        byte=byte.setBitValue(1,1)
 
-
-        edEditText.onImeActionDone { textView, actionId, keyEvent ->
-            Log.d("====", "Done")
-            return@onImeActionDone true
-        }
+        Log.d("----------",TestByte.byteToBit(byte.setBitValue(1,0)))
+//        edEditText.onImeActionDone { textView, actionId, keyEvent ->
+//            Log.d("====", "Done")
+//            return@onImeActionDone true
+//        }
     }
 
     fun onButtonClickTest(view: View) {
