@@ -23,7 +23,6 @@ import java.util.*
 
 interface KIExtensionString {
 
-
     /**
      * 字符串打马赛克 例如：13297713450 => 132****3450
      *
@@ -40,6 +39,13 @@ interface KIExtensionString {
 
     fun String.random(length: Int = 10, random: Random = Random(System.currentTimeMillis())): String = (0 until length).map { this[random.nextInt(this.length)] }.joinToString("")
 
+    /**
+     * @param endIndex 结束位置
+     */
+    fun String.toUpperCase(endIndex: Int): String = this.substring(0, endIndex).toUpperCase() + this.substring(endIndex)
 
-
+    /**
+     * @param endIndex 结束位置
+     */
+    fun String.toLowerCase(endIndex: Int): String = this.substring(0, endIndex).toLowerCase() + this.substring(endIndex)
 }
