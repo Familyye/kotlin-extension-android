@@ -20,9 +20,9 @@ import android.util.Base64
 import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
+import java.util.regex.Pattern
 
 interface KIExtensionString {
-
 
     /**
      * 字符串打马赛克 例如：13297713450 => 132****3450
@@ -40,6 +40,18 @@ interface KIExtensionString {
 
     fun String.random(length: Int = 10, random: Random = Random(System.currentTimeMillis())): String = (0 until length).map { this[random.nextInt(this.length)] }.joinToString("")
 
+    /**
+     * 判断是否保护中文
+     */
+    fun String.isContainChinese():Boolean = this.contains(Pattern.compile("[\u4e00-\u9fa5]").toRegex())
 
+    /**
+     * @param endIndex 结束位置
+     */
+    fun String.toUpperCase(endIndex: Int): String = this.substring(0, endIndex).toUpperCase() + this.substring(endIndex)
 
+    /**
+     * @param endIndex 结束位置
+     */
+    fun String.toLowerCase(endIndex: Int): String = this.substring(0, endIndex).toLowerCase() + this.substring(endIndex)
 }

@@ -47,10 +47,29 @@ class KIExtensionStringTest : KIExtensionString {
     }
 
     @Test
-    fun random() {
+    fun randomTest() {
         assertEquals("1234567890".random(20).length, 20)
         assertEquals("1234567890".random(50).length, 50)
         assertEquals("abcdefghijklmnopqrstuvwxyz".random(50).length, 50)
         assertEquals("这件事情出现在大家眼前,到底是真是假?按照大家".random(50).length, 50)
+    }
+
+    @Test
+    fun isContainChineseTest() {
+        assertEquals("sollyu".isContainChinese(), false)
+        assertEquals("sollyu最牛逼".isContainChinese(), true)
+        assertEquals("sollyu，very good".isContainChinese(), false)
+    }
+
+    @Test
+    fun toUpperCaseTest() {
+        assertEquals("wonium".toUpperCase(1), "Wonium")
+        assertEquals("wonium".toUpperCase(3), "WONium")
+    }
+
+    @Test
+    fun toLowerCaseTest() {
+        assertEquals("WONIum".toLowerCase(1), "wONIum")
+        assertEquals("WONIum".toLowerCase(3), "wonIum")
     }
 }
