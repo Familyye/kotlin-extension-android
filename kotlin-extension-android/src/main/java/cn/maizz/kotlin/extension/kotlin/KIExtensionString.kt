@@ -20,6 +20,7 @@ import android.util.Base64
 import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
+import java.util.regex.Pattern
 
 interface KIExtensionString {
 
@@ -38,6 +39,11 @@ interface KIExtensionString {
     fun String.md5(charset: Charset = Charsets.UTF_8, useUpper: Boolean = true) = MessageDigest.getInstance("MD5").digest(this.toByteArray(charset)).joinToString("") { String.format(if (useUpper) "%02X" else "%02x", it) }
 
     fun String.random(length: Int = 10, random: Random = Random(System.currentTimeMillis())): String = (0 until length).map { this[random.nextInt(this.length)] }.joinToString("")
+
+    /**
+     * 判断是否保护中文
+     */
+    fun String.isContainChinese():Boolean = this.contains(Pattern.compile("[\u4e00-\u9fa5]").toRegex())
 
     /**
      * @param endIndex 结束位置

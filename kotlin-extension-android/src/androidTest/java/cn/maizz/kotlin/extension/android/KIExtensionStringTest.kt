@@ -55,11 +55,17 @@ class KIExtensionStringTest : KIExtensionString {
     }
 
     @Test
+    fun isContainChineseTest() {
+        assertEquals("sollyu".isContainChinese(), false)
+        assertEquals("sollyu最牛逼".isContainChinese(), true)
+        assertEquals("sollyu，very good".isContainChinese(), false)
+    }
+
+    @Test
     fun toUpperCaseTest() {
         assertEquals("wonium".toUpperCase(1), "Wonium")
         assertEquals("wonium".toUpperCase(3), "WONium")
     }
-
 
     @Test
     fun toLowerCaseTest() {
