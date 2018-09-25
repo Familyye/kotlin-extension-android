@@ -2,6 +2,29 @@
 
 ## 说明
 
+这是一个Kotlin的拓展函数增强库，可以很方便的调用一些常用方法库，就比如`List.random`就可以实现列表的随机。
+
+## 使用
+
+### 步骤1
+
+添加jitpack到您的仓库配置中。
+```
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+```
+
+### 步骤2
+
+增加依赖，替换下面`last-version`位最新的版本，当前最新的版本: [![](https://jitpack.io/v/sollyu/kotlin-extension-android.svg)](https://jitpack.io/#sollyu/kotlin-extension-android)
+
+```
+dependencies {
+	implementation 'com.github.sollyu:kotlin-extension-android:last-version'
+}
+```
+
 ## LICENSE
 
 ```text
