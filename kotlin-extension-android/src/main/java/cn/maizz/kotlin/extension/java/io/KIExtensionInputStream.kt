@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.kotlin
+package cn.maizz.kotlin.extension.java.io
 
-interface KIExtensionByte {
+import org.apache.commons.io.IOUtils
+import java.io.InputStream
+import java.nio.charset.Charset
 
-    fun Byte.setBitValue(value: Byte, position: Int): Byte = ((value.toInt() shl position) or this.toInt()).toByte()
+@Suppress("unused")
+interface KIExtensionInputStream {
 
-    fun Byte.toBit(): String =
-            ((this.toInt() shr 7) and 0x1).toString() + ((this.toInt() shr 6) and 0x1).toString() + ((this.toInt() shr 5) and 0x1).toString() + ((this.toInt() shr 4) and 0x1).toString() +
-                    ((this.toInt() shr 3) and 0x1).toString() + ((this.toInt() shr 2) and 0x1).toString() + ((this.toInt() shr 1) and 0x1).toString() + ((this.toInt() shr 0) and 0x1).toString()
+    fun InputStream.toString(encoding: Charset) = IOUtils.toString(this, encoding)!!
+
+    fun InputStream.toByteArray() = IOUtils.toByteArray(this)!!
+
+    fun InputStream.toCharArray(encoding: Charset = Charset.forName("UTF-8")) = IOUtils.toCharArray(this, encoding)!!
+
+    fun InputStream.equal(inputStream: InputStream) = IOUtils.contentEquals(this, inputStream)
 }

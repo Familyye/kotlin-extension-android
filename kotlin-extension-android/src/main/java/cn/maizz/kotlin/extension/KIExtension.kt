@@ -21,9 +21,12 @@ import cn.maizz.kotlin.extension.android.widget.KIExtensionEditView
 import cn.maizz.kotlin.extension.android.widget.KIExtensionTextView
 import cn.maizz.kotlin.extension.android.widget.KIExtensionView
 import cn.maizz.kotlin.extension.java.io.KIExtensionFile
+import cn.maizz.kotlin.extension.java.io.KIExtensionInputStream
 import cn.maizz.kotlin.extension.java.util.KIExtensionDate
+import cn.maizz.kotlin.extension.java.util.KIExtensionList
 import cn.maizz.kotlin.extension.kotlin.KIExtensionByte
 import cn.maizz.kotlin.extension.kotlin.KIExtensionString
+import cn.maizz.kotlin.extension.kotlin.ranges.KIExtensionClosedRange
 
 /**
  * 接入主类
@@ -31,9 +34,13 @@ import cn.maizz.kotlin.extension.kotlin.KIExtensionString
 @Suppress("unused")
 interface KIExtension :
         KIExtensionContext,
+        KIExtensionView,
         KIExtensionTextView,
         KIExtensionEditView,
         KIExtensionFile,
+        KIExtensionInputStream,
         KIExtensionString,
+        KIExtensionClosedRange,
+        KIExtensionList,
         KIExtensionDate,
         KIExtensionByte

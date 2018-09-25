@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.kotlin
+package cn.maizz.kotlin.extension.kotlin.ranges
 
-interface KIExtensionByte {
+import java.util.*
 
-    fun Byte.setBitValue(value: Byte, position: Int): Byte = ((value.toInt() shl position) or this.toInt()).toByte()
+interface KIExtensionClosedRange {
 
-    fun Byte.toBit(): String =
-            ((this.toInt() shr 7) and 0x1).toString() + ((this.toInt() shr 6) and 0x1).toString() + ((this.toInt() shr 5) and 0x1).toString() + ((this.toInt() shr 4) and 0x1).toString() +
-                    ((this.toInt() shr 3) and 0x1).toString() + ((this.toInt() shr 2) and 0x1).toString() + ((this.toInt() shr 1) and 0x1).toString() + ((this.toInt() shr 0) and 0x1).toString()
+    fun ClosedRange<Int>.random() = Random().nextInt((endInclusive + 1) - start) + start
+
+    fun ClosedRange<Char>.random(length: Int) = (1..length).map { (Random().nextInt(endInclusive.toInt() - start.toInt()) + start.toInt()).toChar() }.joinToString("")
+
 }

@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.kotlin
+package cn.maizz.kotlin.extension.java.util
 
-interface KIExtensionByte {
+import java.util.*
 
-    fun Byte.setBitValue(value: Byte, position: Int): Byte = ((value.toInt() shl position) or this.toInt()).toByte()
+interface KIExtensionList {
 
-    fun Byte.toBit(): String =
-            ((this.toInt() shr 7) and 0x1).toString() + ((this.toInt() shr 6) and 0x1).toString() + ((this.toInt() shr 5) and 0x1).toString() + ((this.toInt() shr 4) and 0x1).toString() +
-                    ((this.toInt() shr 3) and 0x1).toString() + ((this.toInt() shr 2) and 0x1).toString() + ((this.toInt() shr 1) and 0x1).toString() + ((this.toInt() shr 0) and 0x1).toString()
+    fun <E> List<E>.random(): E? = get(Random(System.currentTimeMillis()).nextInt(size))
+
 }

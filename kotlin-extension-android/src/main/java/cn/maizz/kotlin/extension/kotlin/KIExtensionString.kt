@@ -24,6 +24,8 @@ import java.util.regex.Pattern
 
 interface KIExtensionString {
 
+    fun String.Companion.random(length: Int): String = (1..length).map { "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"[Random().nextInt(62)] }.joinToString("")
+
     /**
      * 字符串打马赛克 例如：13297713450 => 132****3450
      *
