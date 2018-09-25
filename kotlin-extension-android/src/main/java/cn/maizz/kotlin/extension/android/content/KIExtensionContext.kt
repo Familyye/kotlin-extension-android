@@ -20,6 +20,7 @@ import android.annotation.TargetApi
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Build
 import java.util.concurrent.TimeUnit
@@ -38,6 +39,8 @@ interface KIExtensionContext {
     fun Context.installedPackageList() = this.packageManager.getInstalledApplications(0)
 
     fun Context.isPackageInstalled(packageName: String): Boolean = this.installedPackageList().any { it.packageName == packageName }
+
+    fun Context.getApplicationInfo(packageName: String, flags: Int = 0): ApplicationInfo = this.packageManager.getApplicationInfo(packageName, flags)
 
     fun Context.openUrl(url: String) = this.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     fun Context.openUrl(uri: Uri) = this.startActivity(Intent(Intent.ACTION_VIEW, uri))

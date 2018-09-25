@@ -18,9 +18,13 @@ package cn.maizz.kotlin.extension.java.io
 
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
+import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.FileInputStream
+import java.nio.charset.Charset
 
 interface KIExtensionFile {
     fun File.md5(): String = String(Hex.encodeHex(DigestUtils.md5(FileInputStream(this)))).toUpperCase()
+
+    fun File.writeStringToFile(data: String, charset: Charset = Charset.forName("UTF-8"), append: Boolean = false) = FileUtils.writeStringToFile(this, data, charset, append)
 }
