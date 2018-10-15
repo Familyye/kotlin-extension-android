@@ -18,12 +18,19 @@ package cn.maizz.kotlin.extension.android.content
 
 import android.annotation.TargetApi
 import android.app.usage.UsageStatsManager
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
+import android.content.pm.Signature
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.telephony.TelephonyManager
+import android.view.View
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 @Suppress("HasPlatformType", "unused")
@@ -33,8 +40,10 @@ interface KIExtensionContext {
      * 查询手机中软件的使用情况
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
-    fun Context.queryUsageStats(intervalType: Int = UsageStatsManager.INTERVAL_BEST, beginTime: Long = System.currentTimeMillis() - TimeUnit.SECONDS.toMillis(10), endTime: Long = System.currentTimeMillis()) =
+    fun Context.queryUsageStats(intervalType: Int = UsageStatsManager.INTERVAL_BEST, beginTime: Long = System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(30), endTime: Long = System.currentTimeMillis()) =
             (this.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager).queryUsageStats(intervalType, beginTime, endTime)
+
+    fun Context.getTelephonyManager() = this.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
     /**
      * 打开一个已经存在的APP
@@ -70,6 +79,11 @@ interface KIExtensionContext {
      * @param url 要打开的网址
      */
     fun Context.gotoUrl(url: String) = this.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+
+    /**
+     * 使用浏览器打开一个URL
+     * @param url 要打开的网址
+     */
     fun Context.gotoUrl(uri: Uri) = this.startActivity(Intent(Intent.ACTION_VIEW, uri))
 
     /**
@@ -86,5 +100,33 @@ interface KIExtensionContext {
      * 获取单独一个软件的详细信息
      */
     fun Context.getApplicationInfo(packageName: String, flags: Int = 0): ApplicationInfo = this.packageManager.getApplicationInfo(packageName, flags)
+
+    /**
+     * 获取已经安装的软件签名
+     */
+    fun Context.getApplicationSignature(packageName: String): Signature = this.packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES).signatures[0]
+
+    /**
+     * 获取一个已经下载的APK文件的签名
+     */
+    fun Context.getPackageSignature(apkFile: File): Signature = this.packageManager.getPackageArchiveInfo(apkFile.path, PackageManager.GET_SIGNATURES).signatures[0]
+
+    /**
+     * 获取剪贴板的内容
+     */
+    fun Context.getClipboardString() = (this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).primaryClip?.let { return@let if (it.itemCount > 0) it.getItemAt(0).text else null }
+
+    /**
+     * 设置剪贴板的内容
+     */
+    @Suppress("UsePropertyAccessSyntax")
+    fun Context.setClipboardString(text: CharSequence, label: CharSequence? = null) = (this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newPlainText(label, text))
+
+    /**
+     * 设置剪贴板的内容
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Suppress("UsePropertyAccessSyntax")
+    fun Context.setClipboardHtmlText(text: CharSequence, htmlText: String, label: CharSequence? = null) = (this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newHtmlText(label, text, htmlText))
 
 }
