@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.java.util
+package cn.maizz.kotlin.extension.kotlin
 
-import java.util.*
+interface KIExtensionInt {
 
-interface KIExtensionList {
-
-    fun <E> List<E>.random(): E = get(Random(System.currentTimeMillis()).nextInt(size))
+    fun Int.toString(formatString: String):String = String.format(formatString, this)
 
 }

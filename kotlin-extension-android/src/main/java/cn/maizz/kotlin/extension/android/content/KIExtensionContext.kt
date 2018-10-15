@@ -40,7 +40,7 @@ interface KIExtensionContext {
      * 查询手机中软件的使用情况
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
-    fun Context.queryUsageStats(intervalType: Int = UsageStatsManager.INTERVAL_BEST, beginTime: Long = System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(30), endTime: Long = System.currentTimeMillis()) =
+    fun Context.queryUsageStats(intervalType: Int = UsageStatsManager.INTERVAL_BEST, beginTime: Long = System.currentTimeMillis() - TimeUnit.SECONDS.toMillis(10), endTime: Long = System.currentTimeMillis()) =
             (this.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager).queryUsageStats(intervalType, beginTime, endTime)
 
     fun Context.getTelephonyManager() = this.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
