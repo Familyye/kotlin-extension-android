@@ -32,6 +32,7 @@ import cn.maizz.kotlin.extension.kotlin.ranges.KIExtensionClosedRange
  * 接入主类
  */
 @Suppress("unused")
+@Deprecated("即将废弃")
 interface KIExtension :
         KIExtensionContext,
         KIExtensionView,

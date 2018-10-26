@@ -25,19 +25,38 @@ interface KIExtensionDate {
 
     fun Date.format(format: String = "yyyy-MM-dd HH:mm:ss", locale: Locale = Locale.getDefault()) = SimpleDateFormat(format, locale).format(this)
 
-    fun Date.isToday() = DateUtils.isToday(this.time)
+    /**
+     * 是否是今天
+     */
+    fun Date.isToday(): Boolean = DateUtils.isToday(this.time)
 
-    fun Date.isFuture() = this.time > System.currentTimeMillis()
+    /**
+     * 是否是一个未来的时间
+     */
+    fun Date.isFuture(): Boolean = this.time > System.currentTimeMillis()
 
+    /**
+     * 当前日期是否为明天
+     */
     fun Date.isTomorrow(): Boolean {
-        val todayCalendar = Calendar.getInstance().apply { this.add(Calendar.DAY_OF_MONTH, 1) }
-        val tomorrowCalendar = Calendar.getInstance().apply { this.timeInMillis = this@isTomorrow.time }
+        val todayCalendar: Calendar = Calendar.getInstance().apply { this.add(Calendar.DAY_OF_MONTH, 1) }
+        val tomorrowCalendar: Calendar = Calendar.getInstance().apply { this.timeInMillis = this@isTomorrow.time }
         return (todayCalendar.get(Calendar.YEAR) == tomorrowCalendar.get(Calendar.YEAR) && todayCalendar.get(Calendar.MONTH) == tomorrowCalendar.get(Calendar.MONTH) && todayCalendar.get(Calendar.DAY_OF_MONTH) == tomorrowCalendar.get(Calendar.DAY_OF_MONTH))
     }
 
-    fun Date.isAfterTomorrow():Boolean {
-        val todayCalendar = Calendar.getInstance().apply { this.add(Calendar.DAY_OF_MONTH, 2) }
-        val tomorrowCalendar = Calendar.getInstance().apply { this.timeInMillis = this@isAfterTomorrow.time }
+    /**
+     * 当前日期相对于今天是否是后天
+     */
+    fun Date.isAfterTomorrow(): Boolean {
+        val todayCalendar: Calendar = Calendar.getInstance().apply { this.add(Calendar.DAY_OF_MONTH, 2) }
+        val tomorrowCalendar: Calendar = Calendar.getInstance().apply { this.timeInMillis = this@isAfterTomorrow.time }
         return (todayCalendar.get(Calendar.YEAR) == tomorrowCalendar.get(Calendar.YEAR) && todayCalendar.get(Calendar.MONTH) == tomorrowCalendar.get(Calendar.MONTH) && todayCalendar.get(Calendar.DAY_OF_MONTH) == tomorrowCalendar.get(Calendar.DAY_OF_MONTH))
     }
+
+    /**
+     * 使一个日期相加
+     * @param field  单位，默认天
+     * @param amount 数量，默认1
+     */
+    fun Date.add(field: Int = Calendar.DAY_OF_MONTH, amount: Int = 1): Date = Calendar.getInstance().apply { this.timeInMillis = this@add.time; this.add(field, amount) }.time
 }
