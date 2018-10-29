@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.kotlin
+package cn.maizz.kotlin.extension.android.content.pm
 
-interface KIExtensionByteArray {
-    fun ByteArray.toHex() = this.joinToString(separator = "") { it.toInt().and(0xff).toString(16).padStart(2, '0') }
+import android.content.pm.ApplicationInfo
+
+@Suppress("unused")
+interface KIExtensionApplicationInfo {
+
+    fun ApplicationInfo.isSystemApp():Boolean = (this.flags and ApplicationInfo.FLAG_SYSTEM) != 0
+    fun ApplicationInfo.isSystemUpdateApp():Boolean = (this.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0
+    fun ApplicationInfo.isUserApp():Boolean = (this.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+
 }

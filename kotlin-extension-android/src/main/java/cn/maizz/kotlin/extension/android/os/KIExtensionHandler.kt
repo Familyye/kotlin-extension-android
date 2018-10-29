@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package cn.maizz.kotlin.extension.kotlin
+package cn.maizz.kotlin.extension.android.os
 
-interface KIExtensionByteArray {
-    fun ByteArray.toHex() = this.joinToString(separator = "") { it.toInt().and(0xff).toString(16).padStart(2, '0') }
+import android.os.Handler
+
+interface KIExtensionHandler {
+    fun Handler.postDelayed(delayMillis: Long, runnable: Runnable): Runnable = this.postDelayed(runnable, delayMillis).let { return@let runnable }
+    fun Handler.postDelayed(delayMillis: Long, runnable: () -> Unit): Runnable = this.postDelayed(delayMillis, Runnable { runnable() })
 }
