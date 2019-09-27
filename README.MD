@@ -4,9 +4,9 @@
 
 这是一个Kotlin的拓展函数增强库，可以很方便的调用一些常用方法库，就比如`List.random`就可以实现列表的随机。
 
-## 使用
+详细的功能列表，请参照[kotlin-extension-android](https://github.com/sollyu/kotlin-extension-android)
 
-### 步骤1
+## 使用
 
 添加jitpack到您的仓库配置中。
 ```
@@ -14,8 +14,6 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 ```
-
-### 步骤2
 
 增加依赖，替换下面`last-version`位最新的版本，当前最新的版本: [![](https://jitpack.io/v/sollyu/kotlin-extension-android.svg)](https://jitpack.io/#sollyu/kotlin-extension-android)
 
@@ -28,7 +26,7 @@ dependencies {
 ## LICENSE
 
 ```text
-Copyright 2018 Sollyu, Wonium
+Copyright 2018-2019 Sollyu, Wonium
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
