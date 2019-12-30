@@ -1,1 +1,2 @@
-include ':app', ':kotlin-extension-android'
+include ':app', ':kotlin-extension-android-model'
+

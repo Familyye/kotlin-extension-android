@@ -1,0 +1,3 @@
+[submodule "kotlin-extension-android-model"]
+	path = kotlin-extension-android-model
+	url = git@github.com:sollyu/kotlin-extension-android.git
