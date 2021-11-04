@@ -20,12 +20,20 @@ package cn.maizz.kotlin.extension.android.sample
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import cn.maizz.kotlin.extension.android.content.*
+import org.slf4j.LoggerFactory
+import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
-
+    private val logger= LoggerFactory.getLogger(this::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        logger.info("LOG:MainActivity:onCreate:versionName={} ", baseContext.versionName())
+        logger.info("LOG:MainActivity:onCreate:versionCode={} ", baseContext.versionCode())
+        logger.info("LOG:MainActivity:onCreate:screenWidth={} ", baseContext.getScreenWidth())
+        logger.info("LOG:MainActivity:onCreate:screenHeight={} ", baseContext.getScreenHeight())
+        logger.info("LOG:MainActivity:onCreate:density={} ", baseContext.getDensity())
     }
 
 }
